@@ -19,7 +19,7 @@ public class ClientService {
         return client;
     }
 
-    public Client createClient(Client client) {
+    public void createClient(Client client) {
         try (Session session = HibernateUtil.getInstance().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.persist(client);
@@ -27,7 +27,6 @@ public class ClientService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return client;
     }
 
     public void updateClient(long id, String name) throws RuntimeException {
