@@ -5,15 +5,11 @@ import org.example.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class PlanetService {
-    private final Logger logger = Logger.getLogger("Logger");
 
     public Planet getPlanetByID(String id) {
-        Planet planet = null;
-        try (Session session = HibernateUtil.getInstance().openSession();) {
+        Planet planet ;
+        try (Session session = HibernateUtil.getInstance().openSession()) {
             planet = session.get(Planet.class, id);
             if (planet == null) {
                 throw new RuntimeException("planet not found");
