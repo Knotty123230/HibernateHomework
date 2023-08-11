@@ -30,7 +30,6 @@ public class ClientService {
             transaction.commit();
         } catch (Exception e) {
             Objects.requireNonNull(transaction).rollback();
-            e.printStackTrace();
         }
     }
 
