@@ -40,7 +40,7 @@ public class PlanetServiceTest {
 
     @Test
     public void createPlanetTest() {
-        Session session = HibernateUtil.getInstance().openSession();
+        Session session = HibernateUtil.getConfiguration().openSession();
         planetService.createPlanet("KARS", "Kars");
         Planet planet = session.find(Planet.class, "KARS");
         Assert.assertEquals("Kars", planet.getName());

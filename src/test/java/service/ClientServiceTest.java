@@ -48,7 +48,7 @@ public class ClientServiceTest {
 
     @Test
     public void createPlanetTest() {
-        Session session = HibernateUtil.getInstance().openSession();
+        Session session = HibernateUtil.getConfiguration().openSession();
         clientService.createClient(new Client("ASDS"));
         Client client = session.get(Client.class, 11);
         Assert.assertEquals("ASDS", client.getName());
