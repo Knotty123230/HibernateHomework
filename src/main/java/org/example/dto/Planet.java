@@ -1,5 +1,6 @@
 package org.example.dto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,15 +9,10 @@ import jakarta.persistence.Table;
 @Entity
 public class Planet {
     @Id
+    @Column(nullable = false)
     private String id;
     private String name;
 
-    public Planet(String name) {
-        this.name = name;
-    }
-
-    public Planet() {
-    }
 
     public String getId() {
         return id;

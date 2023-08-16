@@ -2,6 +2,8 @@ package org.example.dto;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "client")
 public class Client {
@@ -10,6 +12,8 @@ public class Client {
     private long id;
     @Column(name = "name")
     private String name;
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private Set<Ticket> tickets;
 
     public Client() {
     }
