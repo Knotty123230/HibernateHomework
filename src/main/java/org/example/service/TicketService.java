@@ -53,16 +53,30 @@ public class TicketService {
         }
     }
 
-    public void updateById(Long id, Client client, Planet planetTo, Planet planetFrom) {
+    public void updateById(Long id, String nameClient, String planetToName, String planetFromName) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getConfiguration().openSession()) {
+            transaction = session.beginTransaction();
+
             Ticket ticket = session.get(Ticket.class, id);
             if (ticket != null) {
-                setClient(client, planetTo, planetFrom, ticket);
-                transaction = session.beginTransaction();
-                session.merge(ticket);
+                Client client = ticket.getClient();
+                client.setName(nameClient);
+
+                Planet toPlanet = ticket.getToPlanet();
+                toPlanet.setName(planetToName);
+
+                Planet fromPlanet = ticket.getFromPlanet();
+                fromPlanet.setName(planetFromName);
+
+                ticket.setCreatedAt(new Timestamp(new Date().getTime()));
+
+                session.persist(ticket);
+
                 transaction.commit();
-            } else throw new RuntimeException("planet not found, you need to create");
+            } else {
+                throw new RuntimeException("Ticket not found, you need to create");
+            }
         } catch (Exception e) {
             Objects.requireNonNull(transaction).rollback();
         }

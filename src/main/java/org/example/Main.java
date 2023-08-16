@@ -14,10 +14,8 @@ public class Main {
 //        planet.setId("MERCURY");
 //        planet.setName("Mercury");
 //        Planet planet1 = new Planet();
-//        planet1.setId("MARS");
-//        planet1.setName("Mars");
 //        ticketService.createTicket(
-//                new Client("Vasil"),
+//                new Client(),
 //                planet,
 //                planet1);
 
@@ -25,15 +23,7 @@ public class Main {
 //        ticketService.deleteById(1L);
 
         //UPDATE
-//        Client client = new Client();
-//        Planet toPlanet = new Planet();
-//        Planet fromPlanet = new Planet();
-//        client.setName("Killlll");
-//        toPlanet.setId("MERCURY");
-//        toPlanet.setName("Mercury");
-//        fromPlanet.setName("Mars");
-//        fromPlanet.setId("MARS");
-//        ticketService.updateById(11L,client, toPlanet, fromPlanet);
+        ticketService.updateById(9L,"Yan", "Mars", "Venera");
 
 
         //GETALL

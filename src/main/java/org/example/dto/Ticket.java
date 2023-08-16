@@ -18,10 +18,10 @@ public class Ticket {
     @JoinColumn(name = "client_id", referencedColumnName = "id") // зв'язок з полем id сутності Client
     private Client client;
 
-    @ManyToOne(fetch = FetchType.EAGER,  targetEntity = Planet.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Planet.class)
     @JoinColumn(name = "from_planet_id", referencedColumnName = "id")
     private Planet fromPlanet;
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Planet.class)
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Planet.class)
     @JoinColumn(name = "to_planet_id",referencedColumnName = "id")
     private Planet toPlanet;
 
